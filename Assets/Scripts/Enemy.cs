@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
 	private SpriteRenderer ren;			// Reference to the sprite renderer.
 	private Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
 	private bool dead = false;			// Whether or not the enemy is dead.
-	private Score score;				// Reference to the Score script.
+    private Rigidbody2D m_rigidBody;
 
     private double SecondsCount = 0;
     private double timeToChange = 0;
@@ -25,9 +25,9 @@ public class Enemy : MonoBehaviour
 	void Awake()
 	{
 		// Setting up the references.
+        m_rigidBody = GetComponent<Rigidbody2D>();
 		ren = transform.Find("body").GetComponent<SpriteRenderer>();
 		frontCheck = transform.Find("frontCheck").transform;
-		score = GameObject.Find("Score").GetComponent<Score>();
 	}
     bool Random01()
     {
@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
 		}
 
 		// Set the enemy's velocity to moveSpeed in the x direction.
-		GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);	
+		m_rigidBody.velocity = new Vector2(transform.localScale.x * moveSpeed, m_rigidBody.velocity.y);	
 
 		// If the enemy has one hit point left and has a damagedEnemy sprite...
 		if(HP == 1 && damagedEnemy != null)
@@ -104,14 +104,11 @@ public class Enemy : MonoBehaviour
 		ren.enabled = true;
 		ren.sprite = deadEnemy;
 
-		// Increase the score by 100 points
-		score.score += 100;
-
 		// Set dead to true.
 		dead = true;
 
 		// Allow the enemy to rotate and spin it by adding a torque.
-		GetComponent<Rigidbody2D>().AddTorque(Random.Range(deathSpinMin,deathSpinMax));
+		m_rigidBody.AddTorque(Random.Range(deathSpinMin,deathSpinMax));
 
 		// Find all of the colliders on the gameobject and set them all to be triggers.
 		Collider2D[] cols = GetComponents<Collider2D>();

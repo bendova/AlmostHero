@@ -41,7 +41,8 @@ public class PlayerControl : MonoBehaviour
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump") && grounded)
         {
-            jump = true;
+            // No jumping for now.
+            //jump = true;
         }
 	}
 
@@ -49,7 +50,11 @@ public class PlayerControl : MonoBehaviour
 	void FixedUpdate()
 	{
 		// Cache the horizontal input.
-		float h = Input.GetAxis("Horizontal");
+        float h = 0; 
+        if(GameManager.s_instance.IsGameRunning())
+        {
+            h = Input.GetAxis("Horizontal");
+        }
 
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
 		anim.SetFloat("Speed", Mathf.Abs(h));
@@ -91,7 +96,7 @@ public class PlayerControl : MonoBehaviour
 			AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
 			// Add a vertical force to the player.
-			GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
+			m_rigidBody.AddForce(new Vector2(0f, jumpForce));
 
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;

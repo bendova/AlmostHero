@@ -33,7 +33,7 @@ public class HealthPickup : MonoBehaviour
 			playerHealth.health = Mathf.Clamp(playerHealth.health, 0f, 100f);
 
 			// Update the health bar.
-			playerHealth.UpdateHealthBar();
+			//playerHealth.UpdateHealthBar();
 
 			// Trigger a new delivery.
 			pickupSpawner.StartCoroutine(pickupSpawner.DeliverPickup());
