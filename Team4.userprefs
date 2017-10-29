@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy.cs">
+    <Files>
+      <File FileName="Assets\Scripts\BackgroundPropSpawner.cs" Line="29" Column="14" />
+      <File FileName="Assets\Scripts\PlayerControl.cs" Line="42" Column="1" />
+      <File FileName="Assets\Scripts\Enemy.cs" Line="26" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Public\Documents\Unity Projects\Team4\Assets\Scripts\Enemy.cs" line="26" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
